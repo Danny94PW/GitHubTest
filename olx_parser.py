@@ -20,22 +20,11 @@ if (os.path.isfile('OLX_actual_hour.csv')):
     f.truncate()
     f.close()
 
-a = 4
-for j in range (2,500):
-    r = requests.get("http://www.olx.pl/uslugi-firmy/obsluga-imprez/piaseczno/?page=" + str(j))
-    print('elo')
-    if r.status_code == 200:
-        a=j
-        print('lel')
-    else:
-        break
 
 
-print('Strony: ',a)
-for i in range(1, a):
+for i in range(1, 500):
     request = requests.get("http://www.olx.pl/uslugi-firmy/obsluga-imprez/piaseczno/?page=" + str(i))
     soup = BeautifulSoup(request.text, "html.parser")
-    print(i)
     for link in soup.findAll('a', {'class': 'marginright5'}):
         url = link['href']
 
